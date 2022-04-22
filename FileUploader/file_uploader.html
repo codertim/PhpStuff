@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>File Uploader</title>
+  </head>
+  <body style="background-color: #FF5F00; padding: 100px;">
+      <form action="file_upload.php" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+          <p><label for="uploadfile">File to Upload</label></p>
+          <input type="file" id="uploadfile" name="uploadfile" />
+          <button type="submit">Upload File</button>
+      </form>
+  </body>
+</html>
+
+
