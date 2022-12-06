@@ -14,9 +14,9 @@ Tue, Nov 29 at 5:10 PM
     $file_dir = "/UploadedFiles/";
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
         $file_dir = "C:\\Temp";
-        echo '<br />This is a server using Windows!';
+        echo '<br />note: server using Windows';
     } else {
-        echo '<br />This is a server not using Windows!';
+        echo '<br />note: server not using Windows';
     }
 
     foreach($_FILES as $fname => $file_arr) {
