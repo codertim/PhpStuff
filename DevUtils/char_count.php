@@ -4,7 +4,8 @@
     <title>Character Count</title>
     <style>
       body {
-        background-color: orange;
+	background-color: orange;
+        min-height: 100vh;
       }
     </style>
   </head>

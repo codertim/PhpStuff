@@ -4,7 +4,8 @@
     <title>Convert to Upper Case</title>
     <style>
       body {
-        background-color: orange;
+	background-color: orange!important;
+        min-height: 100vh;
       }
       #radio-options {
         margin-bottom: 1em;
