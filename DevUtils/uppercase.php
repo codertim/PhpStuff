@@ -4,8 +4,9 @@
     <title>Convert to Upper Case</title>
     <style>
       body {
-	background-color: orange!important;
+        background-color: orange!important;
         min-height: 100vh;
+        padding: 25px;
       }
       #radio-options {
         margin-bottom: 1em;
@@ -52,7 +53,7 @@
             <label for="sentence">Sentence</label>
         </section>
 
-        <button type="submit">Go</button>
+        <button type="submit" class="btn btn-outline-primary">Go</button>
       </form>
     </div>
   </body>

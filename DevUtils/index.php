@@ -6,6 +6,7 @@
       body {
 	background-color: orange!important;
 	min-height: 100vh;
+        padding: 25px;
       }
       section {
         margin-bottom: 1rem;
