@@ -1,3 +1,6 @@
+Tim Force <twforce@yahoo.com>
+To:Tim Force
+Tue, Nov 29 at 5:10 PM
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +9,15 @@
     <body>
 <?php
     define("DEBUG", "1");
-    $file_dir = "C:\\Temp";
+
+    echo "<br />os: " . PHP_OS;
+    $file_dir = "/UploadedFiles/";
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        $file_dir = "C:\\Temp";
+        echo '<br />note: server using Windows';
+    } else {
+        echo '<br />note: server not using Windows';
+    }
 
     foreach($_FILES as $fname => $file_arr) {
         echo "<br />----------------------------<br />";
@@ -35,3 +46,4 @@
 ?>
     </body>
 </html>
+
