@@ -25,8 +25,12 @@
             $char_string = $_POST['charstring'];
         }
         $string_len = strlen($char_string);
+        $trimmed_char_string = trim($char_string);
+        $trimmed_string_len = strlen($trimmed_char_string);
 
         echo $string_len;
+        echo "<br />";
+        echo "Spaces removed (beginning and end) character count: " . $trimmed_string_len;
     ?>
     </section>
     
