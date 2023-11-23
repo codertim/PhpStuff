@@ -2,14 +2,30 @@
 <html>
   <head>
       <title>File Uploader</title>
+	  <style>
+          body {
+              background-color: #222;
+          }
+
+          div#main-content {
+              background-color: #FF5F00;
+              box-sizing: border-box;
+              font-size: clamp(1.5em, 10vh, 3em);
+              height: 200px;
+              margin-top: 5em;
+			  padding: 10px;
+		  }
+	  </style>
   </head>
-  <body style="background-color: #FF5F00; padding: 100px;">
-      <form action="file_upload.php" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-          <p><label for="uploadfile">File to Upload</label></p>
-          <input type="file" id="uploadfile" name="uploadfile" />
-          <button type="submit">Upload File</button>
-      </form>
+  <body>
+      <div id="main-content">
+          <form action="file_upload.php" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+              <p><label for="uploadfile">File to Upload</label></p>
+              <input type="file" id="uploadfile" name="uploadfile" />
+              <button type="submit">Upload File</button>
+          </form>
+      </div>
   </body>
 </html>
 
