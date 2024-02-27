@@ -8,32 +8,31 @@
               background-color: #222;
           }
 
-          div#main-content {
+          main {
               background-color: #FF5F00;
               box-sizing: border-box;
               font-size: clamp(1.5em, 10vh, 3em);
               height: 100vh;
               margin-top: 0;
 			  padding: 10px;
-		  }
-
-          #main-content {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: space-around;
           }
 	  </style>
   </head>
   <body>
-      <div id="main-content">
-          <form action="file_upload.php" method="POST" enctype="multipart/form-data">
-              <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-              <p><label for="uploadfile">File to Upload</label></p>
-              <input type="file" id="uploadfile" name="uploadfile" />
-              <button type="submit">Upload File</button>
-          </form>
-      </div>
+      <main>
+          <article>
+              <form action="file_upload.php" method="POST" enctype="multipart/form-data">
+                  <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+                  <p><label for="uploadfile">File to Upload</label></p>
+                  <input type="file" id="uploadfile" name="uploadfile" />
+                  <button type="submit">Upload File</button>
+              </form>
+          </article>
+        </main>
   </body>
 </html>
 
