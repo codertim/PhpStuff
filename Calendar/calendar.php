@@ -1,5 +1,23 @@
 <html>
   <head>
+    <title>PHP Calendar</title>
+    <style>
+      table {
+        border: 1px solid #000;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid #000;
+        font-weight: bold;
+        background-color: #999;
+        padding: 0.5rem;
+      }
+      td {
+        border: 1px solid #333;
+        padding: 0.5em;
+        vertical-align: top;
+      }
+    </style>
   </head>
   <body>
  
@@ -20,20 +38,20 @@
                 echo "<br />currDateArray after calling getDate(): <br />";
                 print_r($currDateArray);
             }
-            $month_selected = $currDateArray['mon'];
-            $year_selected = $currDateArray['year'];
+            $month = $currDateArray['mon'];
+            $year = $currDateArray['year'];
         } else {
             echo "<br />month and year found in POST";
-            $month_selected = $_POST['month'];
-            $year_selected = $_POST['year'];
+            $month = $_POST['month'];
+            $year = $_POST['year'];
         }
 
         if (DEBUGGING) {
-            echo "<br />month selected:" . $month_selected;
-            echo "<br />year selected:" . $year_selected;
+            echo "<br />month:" . $month;
+            echo "<br />year:" . $year;
         }
 
-        $start_date = mktime(12, 0, 0, $month_selected, 1, $year_selected);
+        $start_date = mktime(12, 0, 0, $month, 1, $year);
         $first_day_of_month_array = getdate($start_date);
         if (DEBUGGING) {
             echo "<br />start_date = " . $start_date;
@@ -46,39 +64,39 @@
         # $month_end = strtotime("last day of this month", time());
 
 
-	    //   $start_week_day = date("D", $month_start);
-        $start_week_day = date("D", $start_date);
-	    //   $end_month_day_number = (int)date("d", $month_end);   // e.g. 30
-        $end_month_day_number = date("t", $start_date);
-        
-
+	    //   $start_weekday = date("D", $month_start);
+        $start_weekday = date("D", $start_date);   // e.g. "Mon"
+	    //   $num_days_in_month = (int)date("d", $month_end);   // e.g. 30
+        $num_days_in_month = date("t", $start_date);   // e.g. 31
 
 
 
         // months drop-down
         $months = array("January", "February", "March", "April", "May", "June", "July", "August", "september", "October", "November", "December");
         echo "<section>";
-        echo '<form action="calendar.php" method="POST">';
+        echo '  <form action="calendar.php" method="POST">';
         echo '    <select name="month">';
         for ($i=1; $i <= 12; $i++)
         {
             $curr_month = $months[$i - 1];
-            if ($month_selected == $i ) {
-                echo "          <option value='$i' selected>$curr_month</option>" ;
+            if ($month == $i ) {
+                echo "          <option value='$i' selected>";
             } else {
-                echo "          <option value='$i'>$curr_month</option>" ;
+                echo "          <option value='$i'>";
             }
+            echo "$curr_month</option>";
         }
         echo '    </select>';
-        echo '    <input type=text" name="year" value="' . $year_selected . '" />';
+        echo '    <input type=text" name="year" value="' . $year . '" />';
         echo '    <button type="submit">Go</button>';
-        echo '</form>';
+        echo '  </form>';
         echo '</section>';
+
 
         if (DEBUGGING) {
             echo '<br />';
-            echo '<br />start_week_day: ' . $start_week_day;
-            echo '<br />end_month_day_number = ' . $end_month_day_number;
+            echo '<br />start_weekday: ' . $start_weekday;
+            echo '<br />num_days_in_month = ' . $num_days_in_month;
             //echo "<br /><br /> SERVER: "  . print_r($_SERVER);
             echo "<br /><br /> ENV: ";
             print_r($_ENV);
@@ -109,24 +127,24 @@
             echo "<br />DEBUGGING: " . DEBUGGING;
             echo "<br />First day of this month, formatted: ";
             echo date("D, M jS Y", $start_date); 
-	        echo "<br />End month day number:" . $end_month_day_number . "<br />";
+	        echo "<br />End month day number:" . $num_days_in_month . "<br />";
 	    }
 
         // set counter
         $counter_start = 0;
-	    if ($start_week_day == "Sun") {
+	    if ($start_weekday == "Sun") {
             $counter_start = 1;
-	    } elseif ($start_week_day == "Mon") {
+	    } elseif ($start_weekday == "Mon") {
             $counter_start = 2;
-	    } elseif ($start_week_day == "Tue") {
+	    } elseif ($start_weekday == "Tue") {
             $counter_start = 3;
-	    } elseif ($start_week_day == "Wed") {
+	    } elseif ($start_weekday == "Wed") {
             $counter_start = 4;
-	    } elseif ($start_week_day == "Thu") {
+	    } elseif ($start_weekday == "Thu") {
             $counter_start = 5;
-	    } elseif ($start_week_day == "Fri") {
+	    } elseif ($start_weekday == "Fri") {
             $counter_start = 6;
-	    } elseif ($start_week_day == "Sat") {
+	    } elseif ($start_weekday == "Sat") {
             $counter_start = 7;
 	    }
 
@@ -163,7 +181,7 @@
 	        for($i = 0; $i < 6; $i++) {
 	            echo "<tr>";
 	            for($j = 0; $j < 7; $j++) {
-                    if ($day_counter <= $end_month_day_number) {
+                    if ($day_counter <= $num_days_in_month) {
 			            echo "<td style='text-align: center;'>" . $day_counter . "</td>";
 			            $day_counter++;
 	                }
