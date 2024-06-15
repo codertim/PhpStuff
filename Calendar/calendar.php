@@ -3,7 +3,7 @@
   </head>
   <body>
  
-    <?php define("DEBUGGING", false); ?>
+    <?php define("DEBUGGING", true); ?>
     <?php echo "<h2>Current Month</h2>"; ?>
     <br />
 
@@ -12,15 +12,18 @@
         if (!isset($_POST['month']) || !isset($_POST['year'])) {
             if (DEBUGGING) {
                 echo "<br />month or year NOT set";
+                echo "<br />_POST[month]: " . $_POST['month'];
+                echo "<br />_POST[year]: " . $_POST['year'];
             }
             $currDateArray = getdate();
             if (DEBUGGING) {
-                echo "<br />currDateArray: <br />";
+                echo "<br />currDateArray after calling getDate(): <br />";
                 print_r($currDateArray);
             }
             $month_selected = $currDateArray['mon'];
             $year_selected = $currDateArray['year'];
         } else {
+            echo "<br />month and year found in POST";
             $month_selected = $_POST['month'];
             $year_selected = $_POST['year'];
         }
@@ -34,13 +37,13 @@
         $first_day_of_month_array = getdate($start_date);
         if (DEBUGGING) {
             echo "<br />start_date = " . $start_date;
-            echo "<br />first_day_of_month_array = <br />";
+            echo "<br />first_day_of_month_array = <br /> &nbsp;&nbsp;";
             print_r($first_day_of_month_array);
         }
 
         $day_abbrevs = array("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat");
-        // $month_start = strtotime("first day of this month", time());
-        // $month_end = strtotime("last day of this month", time());
+        # $month_start = strtotime("first day of this month", time());
+        # $month_end = strtotime("last day of this month", time());
 
 
 	    //   $start_week_day = date("D", $month_start);
